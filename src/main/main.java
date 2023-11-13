@@ -6,6 +6,7 @@ package main;
 
 import controller.FruitController;
 import java.util.Scanner;
+import model.Fruit;
 import view.View;
 
 /**
@@ -20,24 +21,24 @@ public class main {
         // TODO code application logic here
         Scanner scanner = new Scanner(System.in);
         int choice;
-        View taskView = new View();
-        FruitController taskControl = new FruitController();
+        View view = new View();
+        FruitController fruitController = new FruitController();
 
         do {
-            taskView.display();
+            // select menu
+            view.display();
             System.out.print("Choice option:");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    taskControl.createFruit();
+                    Fruit fruit = view.createFruit();
+                    fruitController.createFruit(fruit);
                     break;
                 case 2:
-                    taskControl.viewListOrder();
+                    fruitController.viewListOrder();
                     break;
                 case 3:
-                    taskControl.shopping();
-                    break;
-                case 4:
+                    fruitController.shopping();
                     break;
                 default:
                     break;

@@ -13,11 +13,12 @@ public class FruitController {
     Hashtable<String, ArrayList<Order>> hashtable = new Hashtable<>();
     ArrayList<Order> list_order;
 
-    ;
-
     public FruitController() {
     }
 
+    /**
+     * Select list order
+     */
     public void viewListOrder() {
         if (hashtable.isEmpty()) {
             System.out.println("No Orders");
@@ -34,6 +35,12 @@ public class FruitController {
         }
     }
 
+    /**
+     * Check fruit name
+     * 
+     * @param name
+     * @return 
+     */
     public boolean checkFruit(String name) {
         for (Fruit fruit : list_fruit) {
             if (name.equals(fruit.getName())) {
@@ -49,25 +56,23 @@ public class FruitController {
         return true;
     }
 
-    public void createFruit() {
-        int id = list_fruit.size() + 1;
-        System.out.println("Enter fruit name: ");
-        String name = scanner.nextLine();
-        System.out.println("Enter fruit price: ");
-        double price = scanner.nextDouble();
-        System.out.println("Enter fruit quantity: ");
-        int quantity = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Enter fruit origin: ");
-        String origin = scanner.nextLine();
-        if (checkFruit(name) == true) {
-            list_fruit.add(new Fruit(id, name, price, quantity, origin));
+    /**
+     * Create fruit
+     * 
+     * @param fruit 
+     */
+    public void createFruit(Fruit fruit) {
+        if (checkFruit(fruit.getName()) == true) {
+            list_fruit.add(fruit);
             displayFruit();
         } else {
             displayFruit();
         }
     }
 
+    /**
+     * Select fruit
+     */
     public void displayFruit() {
         System.out.println("List of Fruit:");
         System.out.println("| ++ Item ++ | ++ Fruit Name ++ | ++ Origin ++ | ++ Price ++ |");
